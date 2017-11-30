@@ -5,96 +5,93 @@ let rainbowContent = document.getElementById("rainbows");
 let monkeyBtn = document.getElementById("monkeyfy");
 let horseBtn = document.getElementById("horsefy");
 let dogH1 = document.getElementById("dogH1");
-let horseH1 = document.getElementById("dogH1");
+let rainbowH1 = document.getElementById("rainbowH1");
 
 let dogPics = {
-    pics: [
-        {url: "img/dog1.jpeg", title: "Happy Dog"},
-        {url: "img/dog2.jpeg", title: "Fuzzy Dog"},
-        {url: "img/dog3.jpeg", title: "Barking Dog"},
-    ]
-}
+  pics: [
+    { url: "img/dog1.jpeg", title: "Happy Dog" },
+    { url: "img/dog2.jpeg", title: "Fuzzy Dog" },
+    { url: "img/dog3.jpeg", title: "Barking Dog" }
+  ]
+};
+
 let bowPics = {
-    pics: [
-        {url: "img/rainbow.jpeg", title: "Happy Rainbow"},
-        {url: "img/rainbow2.jpeg", title: "Fuzzy Rainbow"},
-        {url: "img/rainbow3.jpeg", title: "Barking Rainbow"},
-    ]
-}
-
-
+  pics: [
+    { url: "img/rainbow1.jpeg", title: "Happy rainbow" },
+    { url: "img/rainbow2.jpeg", title: "Fuzzy rainbow" },
+    { url: "img/rainbow3.jpeg", title: "Barking rainbow" }
+  ]
+};
 
 // dynamically create some elements to insert pics into
-// make n sections: n is based on number of imgs are avilable
-// insert the pictures 
-// loop through the images and create sections ne at a time
+// make n sections: n is based on number of imgs are available
+// insert the pictures
+// loop through the images and create sections one at a time
 
-for (let i=0; i < dogPics.pics.length; i++) {
-    // console.log(dogPics.pics[i].url);
-    let section = document.createElement("section");
-    section.setAttribute("class", "dog-card card");
-    section.style.backgroundImage = `url(${dogPics.pics[i].url})`;
-    // console.log("section?", section);
-    dogContent.appendChild(section);
-
+for (let i = 0; i < dogPics.pics.length; i++) {
+  let section = document.createElement("section");
+  section.setAttribute("class", "dog-card card");
+  section.style.backgroundImage = `url(${dogPics.pics[i].url})`;
+  dogContent.appendChild(section);
 }
-for (let i=0; i < bowPics.picslength; i++) {
-    // console.log(dogPics.pics[i].url);
-    let section = document.createElement("section");
-    section.setAttribute("class", "rainbow-card card");
-    section.style.backgroundImage = `url(${bowPics.pics[i].url})`;
-    // console.log("section?", section);
-    rainbowContent.appendChild(section);
 
+for (let i = 0; i < bowPics.pics.length; i++) {
+  let section = document.createElement("section");
+  section.setAttribute("class", "rainbow-card card");
+  section.style.backgroundImage = `url(${bowPics.pics[i].url})`;
+  rainbowContent.appendChild(section);
 }
 
 // Click on a button and make the pictures swap out with something else
-// // event listener on each button
+// event listener on each button
 monkeyBtn.addEventListener("click", function() {
-    console.log('Is this thing on?');
-    monkeyBtn.classList.toggle("monkey");
-    let dogCards = document.getElementsByClassName("dog-card");
-    for (let i = 0; i < dogCards.length; i++ ) {
-        // image change 
-        if (this.classList.contains("monkey")) {
-        
-        dogCards[i].style.backgroundImage = "url(img/dog-monkey.jpeg)";
-        // border change 
-    } else {
-        dogCards[i].style.backgroundImage = `url(${dogPics.pics[i].url})`;
-        }
-        dogCards[i].classList.toggle("facy-border");
-        
-    // button text change 
+  console.log("Is this thing on?");
+  monkeyBtn.classList.toggle("monkey");
+  let dogCards = document.getElementsByClassName("dog-card");
+  for (let i = 0; i < dogCards.length; i++) {
+    // image change
     if (this.classList.contains("monkey")) {
-        console.log(this);
-        this.innerHTML = "Dogify It!";
-        dogH1.innerHTML = "My Awesome Monkey Pics";
+      dogCards[i].style.backgroundImage = "url(img/dog-monkey.jpeg)";
     } else {
-        this.innerHTML = "Monkeyfy It!";
-        dogH1innerHTML = "My Awesome Dog Pics";
+      dogCards[i].style.backgroundImage = `url(${dogPics.pics[i].url})`;
+    }
+    // border change
+    dogCards[i].classList.toggle("fancy-border");
+  }
+  // button text change
+  // h1 text change
+  if (this.classList.contains("monkey")) {
+    console.log(this);
+    this.innerHTML = "Dogify It!";
+    dogH1.innerHTML = "Monkey";
+  } else {
+    this.innerHTML = "Monkeyfy It!";
+    dogH1.innerHTML = "Dog";
+  }
+});
 
-    }
-// h1 text change 
-};
 horseBtn.addEventListener("click", function() {
-    console.log('Is this thing on?');
-    horseBtn.classList.toggle("monkey");
-    let horseCards = document.getElementsByClassName("rainbow-card");
-    for (let i = 0; i < horseCards.length; i++ ) {
-        // image change 
-        horseCards[i].style.backgroundImage = "url(img/horse-rainbow.jpeg)";
-    
-    // border change 
-    horseCards[i].classList.toggle("facy-border");
-    }
-    // button text change 
+  console.log("Is this thing on?");
+  this.classList.toggle("horse");
+  let horseCards = document.getElementsByClassName("rainbow-card");
+  for (let i = 0; i < horseCards.length; i++) {
     if (this.classList.contains("horse")) {
-        console.log(this);
-        this.innerHTML = "Horsefy It!";
-        horseH1.innerHTML = "My Awesome Rainbow Pics";
+      // image change
+      horseCards[i].style.backgroundImage = "url(img/horse-rainbow.jpeg)";
     } else {
-        this.innerHTML = "Rainbowfy It!";
-        horseH1.innerHTML = "My Awesome Horse Pics";
+      horseCards[i].style.backgroundImage = `url(${bowPics.pics[i].url})`;
     }
-// h1 text change 
+    // border change
+    horseCards[i].classList.toggle("fancy-border");
+  }
+  // button text change
+  // h1 text change
+  if (this.classList.contains("horse")) {
+    console.log(this);
+    this.innerHTML = "Rainbowfy It!";
+    rainbowH1.innerHTML = "Horse";
+  } else {
+    this.innerHTML = "Horsefy It!";
+    rainbowH1.innerHTML = "Rainbow";
+  }
+});
