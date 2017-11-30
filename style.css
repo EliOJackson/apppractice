@@ -32,3 +32,11 @@ body {
     border-color: orange;
     border-radius: 5px;
   }
+
+  .monkey-fied {
+      background-image: url("img/dog-monkey.jpeg") !important;
+  }
+
+  .horse-fied {
+      background-image: url("img/horse-rainbow.jpeg") !important;
+  }
